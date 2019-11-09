@@ -1,8 +1,8 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.0.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-	id 'java'
-//	id 'war'
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+    id 'war'
 }
 
 group = 'com.crud'
@@ -10,7 +10,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
@@ -18,18 +18,48 @@ dependencies {
 //	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 //		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 //	}
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.projectlombok:lombok')
-	annotationProcessor('org.projectlombok:lombok')
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-//	compile('mysql:mysql-connector-java')
-    compile('org.postgresql:postgresql')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.projectlombok:lombok')
+    annotationProcessor('org.projectlombok:lombok')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('mysql:mysql-connector-java')
 
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 
-//	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+//  providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
+
+//21.5
+//plugins {
+//	id 'org.springframework.boot' version '2.2.0.RELEASE'
+//	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+//	id 'java'
+//}
+//
+//group = 'com.crud'
+//version = '0.0.1-SNAPSHOT'
+//sourceCompatibility = '1.8'
+//
+//repositories {
+//	mavenCentral()
+//}
+//
+//dependencies {
+//
+//	compile('org.springframework.boot:spring-boot-starter-web')
+//	compile('org.projectlombok:lombok')
+//	annotationProcessor('org.projectlombok:lombok')
+//	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+//
+//    compile('org.postgresql:postgresql')
+//
+//	testCompile('org.springframework.boot:spring-boot-starter-test')
+//}
+//
+//test {
+//	useJUnitPlatform()
+//}
