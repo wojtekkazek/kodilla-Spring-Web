@@ -9,7 +9,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import java.awt.*;
 
 @SpringBootApplication
-public class Tasks2Application extends SpringBootServletInitializer {
+//public class Tasks2Application extends SpringBootServletInitializer {
+public class Tasks2Application {
 
 	public static void main(String[] args) {
 //		TaskDto taskDto = new TaskDto(
@@ -26,9 +27,9 @@ public class Tasks2Application extends SpringBootServletInitializer {
 		SpringApplication.run(Tasks2Application.class, args);
 	}
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(Tasks2Application.class);
-	}
+//	@Override
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//		return application.sources(Tasks2Application.class);
+//	}
 
 }
