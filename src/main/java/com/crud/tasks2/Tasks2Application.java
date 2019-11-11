@@ -27,6 +27,7 @@ public class Tasks2Application {
 		SpringApplication.run(Tasks2Application.class, args);
 	}
 
+//	21.5
 //	@Override
 //	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 //		return application.sources(Tasks2Application.class);
