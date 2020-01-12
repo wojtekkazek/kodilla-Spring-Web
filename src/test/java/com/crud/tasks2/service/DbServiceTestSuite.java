@@ -12,7 +12,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -38,5 +40,34 @@ public class DbServiceTestSuite {
 
         //Then
         Assert.assertEquals(result.size(),1);
+    }
+
+    @Test
+    public void shouldSaveTask() {
+        //Given
+        Task task = new Task(1L, "title", "content");
+
+        when(taskRepository.save(any())).thenReturn(task);
+
+        //When
+        Task result = dbService.saveTask(task);
+
+        //Then
+        Assert.assertEquals(result.getTitle(),"title");
+    }
+
+    @Test
+    public void shouldGetTask() {
+        //Given
+        Task task = new Task(1L, "title", "content");
+        Optional<Task> optionalTask = Optional.of(task);
+
+        when(taskRepository.findById(any())).thenReturn(optionalTask);
+
+        //When
+        Optional<Task> result = dbService.getTask(1L);
+
+        //Then
+        Assert.assertEquals(result.get().getTitle(),"title");
     }
 }
