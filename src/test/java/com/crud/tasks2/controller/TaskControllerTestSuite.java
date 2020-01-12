@@ -19,6 +19,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -68,10 +69,10 @@ public class TaskControllerTestSuite {
 
         //When & Then
         mockMvc.perform(get("/v1/task/getTask")
-                .param("id", "101L")
+                .param("taskId", "101")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", is(101L)))
+                .andExpect(jsonPath("$.id", is(101)))
                 .andExpect(jsonPath("$.title", is("test task 1")))
                 .andExpect(jsonPath("$.content", is("test content 1")));
     }
@@ -81,7 +82,7 @@ public class TaskControllerTestSuite {
 
         //When & Then
         mockMvc.perform(delete("/v1/task/deleteTask")
-                .param("id", "101L")
+                .param("taskId", "101")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
@@ -92,10 +93,10 @@ public class TaskControllerTestSuite {
         TaskDto taskDto1 =  new TaskDto(101L, "test task 1", "test content 1");
         TaskDto taskDto2 =  new TaskDto(102L, "test task 2", "test content 2");
 
-        when(taskMapper.mapToTaskDto(dbService.saveTask(taskMapper.mapToTask(taskDto1)))).thenReturn(taskDto2);
+        when(taskController.updateTask(any())).thenReturn(taskDto2);
 
         Gson gson = new Gson();
-        String jsonContent = gson.toJson(taskDto1);
+        String jsonContent = gson.toJson(taskDto2);
 
         //When & Then
         mockMvc.perform(put("/v1/task/updateTask")
