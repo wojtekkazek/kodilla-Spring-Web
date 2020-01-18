@@ -1,16 +1,12 @@
 package com.crud.tasks2;
 
-import com.crud.tasks2.domain.TaskDto;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-import java.awt.*;
-
 @SpringBootApplication
-//public class Tasks2Application extends SpringBootServletInitializer {
-public class Tasks2Application {
+public class Tasks2Application extends SpringBootServletInitializer {
+//public class Tasks2Application {
 
 	public static void main(String[] args) {
 //		TaskDto taskDto = new TaskDto(
