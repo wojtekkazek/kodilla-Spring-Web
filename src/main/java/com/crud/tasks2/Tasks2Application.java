@@ -2,14 +2,16 @@ package com.crud.tasks2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class Tasks2Application extends SpringBootServletInitializer {
-//public class Tasks2Application {
+//tomcat
+//public class Tasks2Application extends SpringBootServletInitializer {
+    //heroku
+public class Tasks2Application {
 
 	public static void main(String[] args) {
-//		TaskDto taskDto = new TaskDto(
+// 18.3
+		//		TaskDto taskDto = new TaskDto(
 //				(long)1,
 //				"Test title",
 //				"I want to be a coder");
@@ -23,7 +25,7 @@ public class Tasks2Application extends SpringBootServletInitializer {
 		SpringApplication.run(Tasks2Application.class, args);
 	}
 
-//	21.5
+//	Tomcat
 //	@Override
 //	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 //		return application.sources(Tasks2Application.class);

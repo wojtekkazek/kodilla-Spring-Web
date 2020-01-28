@@ -2,7 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.2.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
-    id 'war'
+//    id 'war'
 }
 
 group = 'com.crud'
@@ -22,8 +22,10 @@ dependencies {
     compile('org.projectlombok:lombok')
     annotationProcessor('org.projectlombok:lombok')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('mysql:mysql-connector-java')
-//    compile('org.postgresql:postgresql')
+    //tomcat
+//    compile('mysql:mysql-connector-java')
+    //heroku
+    compile('org.postgresql:postgresql')
     compile('io.springfox:springfox-swagger2:2.7.0')
     compile('io.springfox:springfox-swagger-ui:2.7.0')
     compile('org.springframework.boot:spring-boot-starter-mail:1.5.7.RELEASE')
@@ -39,34 +41,3 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-
-//21.5 / 23.1 / 31.2 - heroku
-//plugins {
-//	id 'org.springframework.boot' version '2.2.0.RELEASE'
-//	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-//	id 'java'
-//}
-//
-//group = 'com.crud'
-//version = '0.0.1-SNAPSHOT'
-//sourceCompatibility = '1.8'
-//
-//repositories {
-//	mavenCentral()
-//}
-//
-//dependencies {
-//
-//	compile('org.springframework.boot:spring-boot-starter-web')
-//	compile('org.projectlombok:lombok')
-//	annotationProcessor('org.projectlombok:lombok')
-//	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-//
-//    compile('org.postgresql:postgresql')
-//
-//	testCompile('org.springframework.boot:spring-boot-starter-test')
-//}
-//
-//test {
-//	useJUnitPlatform()
-//}
