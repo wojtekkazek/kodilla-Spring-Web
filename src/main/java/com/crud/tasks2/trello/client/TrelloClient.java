@@ -41,8 +41,8 @@ public class TrelloClient {
     public List<TrelloBoardDto> getTrelloBoards() {
 
 //        TrelloBoardDto[] boardsResponse = restTemplate.getForObject(
-//                trelloApiEndpoint + "/members/wojciechkazek/boards" + "?key=" + trelloAppKey + "&token=" + trelloToken,
-//                TrelloBoardDto[].class);
+////                trelloApiEndpoint + "/members/wojciechkazek/boards" + "?key=" + trelloAppKey + "&token=" + trelloToken,
+////                TrelloBoardDto[].class);
 
         try {
             TrelloBoardDto[] boardsResponse = restTemplate.getForObject(buildUrl(), TrelloBoardDto[].class);
