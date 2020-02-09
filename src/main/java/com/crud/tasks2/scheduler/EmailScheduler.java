@@ -5,7 +5,6 @@ import com.crud.tasks2.domain.Mail;
 import com.crud.tasks2.repository.TaskRepository;
 import com.crud.tasks2.service.SimpleEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,7 +22,7 @@ public class EmailScheduler {
     private AdminConfig adminConfig;
 
 //    @Scheduled(cron = "0 0 10 * * *")
-    @Scheduled(fixedDelay = 10000)
+//    @Scheduled(fixedDelay = 10000)
     public void sendInformationEmail() {
         long size = taskRepository.count();
         String s;
