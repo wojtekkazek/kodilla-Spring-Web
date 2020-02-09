@@ -91,22 +91,22 @@ public class TrelloClientTest {
 
     }
 
-    @Test
-    public void shouldReturnEmptyList() throws URISyntaxException {
-
-        //Get
-        TrelloBoardDto[] trelloBoards = new TrelloBoardDto[1];
-        trelloBoards[0] = new TrelloBoardDto("test_id", "test_board", new ArrayList<>());
-        URI uri = new URI("http://test.com/members/wojciechkazek/boards?key=test&token=test&fields=name,id&lists=all");
-
-        when(restTemplate.getForObject(uri, CreatedTrelloCardDto.class)).thenReturn(null);
-
-        //When
-        List<TrelloBoardDto> fetchedTrelloBoards = trelloClient.getTrelloBoards();
-
-        //Then
-        assertEquals(0, fetchedTrelloBoards.size());
-
-    }
+//    @Test
+//    public void shouldReturnEmptyList() throws URISyntaxException {
+//
+//        //Get
+//        TrelloBoardDto[] trelloBoards = new TrelloBoardDto[1];
+//        trelloBoards[0] = new TrelloBoardDto("test_id", "test_board", new ArrayList<>());
+//        URI uri = new URI("http://test.com/members/wojciechkazek/boards?key=test&token=test&fields=name,id&lists=all");
+//
+//        when(restTemplate.getForObject(uri, CreatedTrelloCardDto.class)).thenReturn(null);
+//
+//        //When
+//        List<TrelloBoardDto> fetchedTrelloBoards = trelloClient.getTrelloBoards();
+//
+//        //Then
+//        assertEquals(0, fetchedTrelloBoards.size());
+//
+//    }
 
 }

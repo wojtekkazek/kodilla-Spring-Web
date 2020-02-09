@@ -21,7 +21,8 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getTasks")
     public List<TaskDto> getTasks() {
-        return taskMapper.mapToTaskDtoList(service.getAllTasks()); }
+        return taskMapper.mapToTaskDtoList(service.getAllTasks());
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "getTask")
     public TaskDto getTask(@RequestParam(name = "taskId") Long taskId) throws TaskNotFoundException {
@@ -42,5 +43,4 @@ public class TaskController {
     public void createTask(@RequestBody TaskDto taskDto) {
         service.saveTask(taskMapper.mapToTask(taskDto));
     }
-
 }

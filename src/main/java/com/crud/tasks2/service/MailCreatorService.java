@@ -42,4 +42,20 @@ public class MailCreatorService {
         context.setVariable("application_functionality", functionality);
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
+
+    public String buildOnceADayEmail (String message) {
+
+        Context context = new Context();
+        context.setVariable("message", message);
+        context.setVariable("tasks_url", "http://localhost:8888/tasks_frontend/");
+        context.setVariable("button", "Visit website");
+        context.setVariable("admin_name", adminConfig.getAdminName());
+        context.setVariable("company_name", adminConfig.getCompanyName());
+        context.setVariable("company_email", adminConfig.getCompanyEmail());
+        context.setVariable("company_phone", adminConfig.getCompanyPhone());
+        context.setVariable("show_button", true);
+        context.setVariable("is_friend", false);
+        context.setVariable("admin_config", adminConfig);
+        return templateEngine.process("mail/once-a-day-mail", context);
+    }
 }

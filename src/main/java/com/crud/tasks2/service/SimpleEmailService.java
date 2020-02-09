@@ -12,6 +12,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
+import java.util.regex.Pattern;
+
 @Service
 public class SimpleEmailService {
 
@@ -36,19 +38,30 @@ public class SimpleEmailService {
         }
     }
 
-//    public static boolean isValid(String email)
-//    {
-//        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-//                "[a-zA-Z0-9_+&*-]+)*@" +
-//                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-//                "A-Z]{2,7}$";
-//
-//        Pattern pat = Pattern.compile(emailRegex);
-//        if (email == null)
-//            return false;
-//        return pat.matcher(email).matches();
-//    }
-//
+//    32.3
+    public void sendDaily(final Mail mail) {
+        LOGGER.info("Starting email preparation...");
+        try {
+            javaMailSender.send(createMimeDailyMessage(mail));
+            LOGGER.info("Email has been sent.");
+        } catch (MailException e) {
+            LOGGER.error("Failed to process email sending: ", e.getMessage(), e);
+        }
+    }
+
+    public static boolean isValid(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
+    }
+
     private MimeMessagePreparator createMimeMessage(final Mail mail) {
         return mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
@@ -56,6 +69,17 @@ public class SimpleEmailService {
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
             messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
+        };
+    }
+
+//    32.3
+    private MimeMessagePreparator createMimeDailyMessage(final Mail mail) {
+        return mimeMessage -> {
+            MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+            messageHelper.setFrom(adminConfig.getAdminMail());
+            messageHelper.setTo(mail.getMailTo());
+            messageHelper.setSubject(mail.getSubject());
+            messageHelper.setText(mailCreatorService.buildOnceADayEmail(mail.getMessage()), true);
         };
     }
 
